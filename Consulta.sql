@@ -39,14 +39,3 @@ CREATE TABLE IF NOT EXISTS conteudos (
   favorita BOOLEAN DEFAULT FALSE,
   FOREIGN KEY (id_autor) REFERENCES usuarios(id) ON DELETE CASCADE
 );
-
--- Tabela de favoritos (receitas marcadas por usuários)
-CREATE TABLE IF NOT EXISTS favoritos (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  id_usuario INT NOT NULL,
-  id_conteudo INT NOT NULL,
-  data_adicionado DATETIME DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE,
-  FOREIGN KEY (id_conteudo) REFERENCES conteudos(id) ON DELETE CASCADE,
-  UNIQUE KEY (id_usuario, id_conteudo)
-);
